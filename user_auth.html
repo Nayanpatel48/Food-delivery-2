@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication App Using Firebase</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        /* Full-screen video background */
+        .video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Behind the content */
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Cover the entire screen */
+        }
+        section {
+            height: 100vh;
+            background-color: rgba(236, 236, 236, 0.8); /* Semi-transparent background for content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* For stacking context */
+            z-index: 1; /* Above the video */
+        }
+        .signup-form, .login-form {
+            min-width: 300px;
+            text-align: center;
+            display: none;
+        }
+        #user-profile {
+            display: none;
+        }
+        #email-verify {
+            width: 400px;
+        }
+        #forgot-password-btn {
+            font-size: 17px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #reset-password-form {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop class="video-background">
+        <source src="mixkit-contemporary-43198-full-hd.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <section>
+        <!-- SIGN IN FORM -->
+        <div class="ui segment login-form" id="login-form">
+            <form class="ui form">
+                <div class="ui stacked segment">
+                    <!-- GOOGLE LOGIN BUTTON -->
+                    <button class="ui google plus button fluid big" id="login-with-google-btn">
+                        <i class="google icon"></i>
+                        Log In With Google
+                    </button>
+
+                    <!-- DIVIDER -->
+                    <div class="ui horizontal divider">OR</div>
+
+                    <!-- Error message -->
+                    <div class="ui error message" id="login-error-message"></div>
+
+                    <!-- Email -->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="email" placeholder="email" id="login-email">
+                        </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" placeholder="Password" id="login-password">
+                        </div>
+                    </div>
+                    <button class="ui button blue fluid" id="login-btn">
+                        Log in
+                    </button>
+                    <br />
+                    <a id="forgot-password-btn">Forgot password</a>
+                </div>
+            </form>
+            <div class="ui message small">
+                Need an account?
+                <a id="need-an-account-btn">Sign Up</a>
+            </div>
+        </div>
+
+        <div class="ui segment" id="user-profile">
+            <div class="ui card">
+                <div class="content">
+                    <div class="header">
+                        User Profile
+                    </div>
+                    <div class="meta" id="user-email">
+                        someemail@gmail.com
+                    </div>
+                </div>
+                <div class="extra content">
+                    <button class="ui button red tiny" id="logout-btn">
+                        Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signup form -->
+        <div class="ui segment grey signup-form" id="signup-form">
+            <div class="ui form">
+                <div class="ui stacked segment">
+                    <div class="ui error message" id="error-message">ERROR</div>
+
+                    <!-- Name -->
+                    <div class="field">
+                        <div class="ui left icon input big">
+                            <i class="user icon"></i>
+                            <input type="text" placeholder="Name" id="name" />
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="field">
+                        <div class="ui left icon input big">
+                            <i class="phone icon"></i>
+                            <input type="number" placeholder="Phone" id="phone" />
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="email" placeholder="Email" id="email">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" placeholder="Password" id="password">
+                        </div>
+                    </div>
+
+                    <!-- Button for CREATE ACCOUNT -->
+                    <button class="ui button green fluid" id="signup-btn">CREATE ACCOUNT</button>
+                </div>
+            </div>
+            <div class="ui message small">ALREADY HAVE AN ACCOUNT?<a id="havve-an-account-btn">LOG IN</a></div>
+        </div>
+    </section>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
