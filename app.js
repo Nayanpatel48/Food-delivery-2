@@ -22,13 +22,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
 // Your Firebase configuration
+//user ypur own credentials
 const firebaseConfig = {
-    apiKey: "AIzaSyB9ppt5vU-XhTu6FYaoWY60oaDAZmXF_-4",
-    authDomain: "my-first-firebase-projec-a87d4.firebaseapp.com",
-    projectId: "my-first-firebase-projec-a87d4",
-    storageBucket: "my-first-firebase-projec-a87d4.appspot.com",
-    messagingSenderId: "253620189390",
-    appId: "1:253620189390:web:3b7f7e0c4bdff852e3f89f"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   };
 
 // Initialize Firebase
